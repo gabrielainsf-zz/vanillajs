@@ -1,0 +1,26 @@
+/* Write a function called totalCaps, which accepts an array of strings and returns the total number of capitals in each of the strings. Do not convert the array into a string.*/
+
+function totalCaps(arr) {
+  // Loop through each string in the array
+  // Count how many capital letters there are in each string
+  
+  let capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  let capitalsCount = 0;
+  
+  for (let words of arr) {
+    let splitWords = words.split("");
+   
+    for (let i = 0; i < splitWords.length; i++) {
+      let letter = splitWords[i]
+     
+      if (capitals.includes(letter)) {
+        capitalsCount++
+      }
+    }
+  }
+  
+  return capitalsCount;
+  
+}
+
+totalCaps(["AwesomE", "ThIngs", "hAppEning", "HerE"]) // 8
