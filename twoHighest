@@ -1,0 +1,41 @@
+/* Write a function called twoHighest that takes an array of numbers as its argument and returns the two highest numbers within the array. 
+
+The returned value should be an array in the following format: [secondHighest, highest]
+
+The order of the numbers passed in could be any order. */
+
+function twoHighest(arr) {
+  // Loop through array 
+  // Store the highest number so far 
+  // Compare current number to highest number
+  // If the current number is higher, replace that as the current highest
+  // Unshift the highest number 
+  
+  let highestArray = [];
+  let currentHighest = arr[0];
+  let secondHighest = arr[0];
+  
+  for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > currentHighest) {
+      currentHighest = arr[i]; 
+   }
+  }
+  
+  let idx = arr.indexOf(currentHighest);
+  arr.splice(idx, 1);
+  
+  for (let j = 0; j < arr.length; j++) {
+    if (currentHighest >= arr[j] && arr[j] > secondHighest) {
+      secondHighest = arr[j]; 
+    }
+  } 
+  
+  highestArray.unshift(currentHighest);
+  highestArray.unshift(secondHighest);
+
+  return highestArray;
+}
+
+//twoHighest([1, 2, 10, 8]); // [8, 10]
+//twoHighest([1, 2, 2]) // [2, 2];
+twoHighest([4, 25, 3, 20, 19, 5]); // [20,25]
