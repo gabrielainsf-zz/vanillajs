@@ -1,0 +1,50 @@
+/* A clerk works at a movie theater where each ticket costs $25. There is a line of people waiting to buy tickets, and each one has a single $100, $50, or $25 bill. The clerk wants to sell a ticket to every person in the line. For each input, can she sell a ticket to everyone and give change if she starts with no money and has to go through the line in order? If so, your function should return "YES." If not, it should return "NO."
+
+Write a function called canSellTickets based on the above scenario. Note that for any person in line, the clerk does not know the values of all future bills. The clerk simply tries to make change using whatever she has at the time and favors getting rid of larger bills first.*/
+
+function canSellTickets(bills) {
+  // Loop through the bills
+ // Need to keep track of bills
+
+  let twenties = 0;
+  let fifties = 0;
+  let hundreds = 0;
+  
+  for (let i = 0; i < bills.length; i++) {
+    
+    // If bill is 25, no change needed!
+    if (bills[i] === 25) {
+        twenties++
+        
+    // If bill is 50, check if there are enough 25s for change, add to 50s count, subtract from 25s count    
+    } else if (bills[i] === 50) {
+        if (twenties > 0) {
+          twenties--
+          fifties++
+        } else {
+          return "NO";
+        }
+    
+    // If bill is 100, check if there are enough bills for change, add to 100s count, subtract which bills were used    
+    } else if (bills[i] === 100) {
+      if (twenties >= 3) {
+        hundreds++
+        twenties--
+        twenties--
+        twenties--
+      } else if (fifties >= 1 && twenties >= 1) {
+        hundreds++
+        fifties--
+        twenties--
+      } else {
+        return "NO";
+      }
+    }
+ }
+ return "YES";
+}
+
+// canSellTickets([25, 25, 25, 25, 50, 100]); // "YES"
+canSellTickets([25, 50, 25, 100, 25, 25, 25, 50, 50, 100]); // "YES"
+// canSellTickets([25, 100]); // "NO"
+// canSellTickets([25, 50, 50, 25]); // "NO"
