@@ -1,0 +1,27 @@
+/* Write a function called findTwins, which accepts an array of integers and finds two of same numbers and returns the number that is repeated twice. The function should return null if there is not a number repeated twice.
+
+*/
+
+function findTwins(arr) {
+  // Check if two numbers are the same in an Array
+  // Loop through array, keep one number as the comparator, loop through the other numbers
+  // If does not match, increment to the next index
+  // If they do match, push the number with a match
+  let startIdx = 0
+  let secondIdx = 1
+  while (startIdx <= arr.length-1) {
+    while (secondIdx <= arr.length-1) {
+      if (arr[startIdx] === arr[secondIdx]) {
+        return arr[startIdx];
+      } else {
+        secondIdx++;
+      }
+    }
+    startIdx++;
+    secondIdx = startIdx + 1;
+  }
+  return null;
+}
+
+//findTwins([4,1,6,1,5]) // 1
+findTwins([2,3,6,34,7,8,2]) // 2
