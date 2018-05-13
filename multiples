@@ -1,0 +1,29 @@
+/*Implement a function called multiples that accepts two numbers: x and n. 
+
+The function should return the first n multiples of the number x. 
+
+Assume that x is a positive integer.
+
+Examples:
+
+multiples(3, 4) // [3, 6, 9, 12]
+multiples(2, 5) // [2, 4, 6, 8, 10]
+
+Credit - https://www.codewars.com/kata/return-the-first-m-multiples-of-n/train/javascript*/
+
+function multiples(x, n) {
+  // Loop through length n
+  // At each iteration, multiply by counter, counter begins at 1 
+  // Push product to new Array
+  // Add count to counter
+  let multiplesArray = [];
+  let currentMultiple = 1;
+  
+  for (i = 0; i < n; i++) {
+    multiplesArray.push(x*currentMultiple);
+    currentMultiple++
+  }
+  return multiplesArray;
+}
+
+multiples(3, 4) // [3, 6, 9, 12]
